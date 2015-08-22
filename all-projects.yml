@@ -32,7 +32,7 @@ projects:
       
     - name: registry
       repo_name: distribution   
-      ref: master
+      ref: registr/2.1
       path: docs/    
       
     - name: kitematic
