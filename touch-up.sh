@@ -1,11 +1,11 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 DOCS_DIR=$( dirname $( find /docs -name 'build.json' | head -n1 ) )
 BUILD_JSON="${DOCS_DIR}/build.json"
-BUILDINFO_PARTIAL="${DOCS_DIR}/layouts/partials/buildinfo.html"
+BUILDINFO_PARTIAL="${DOCS_DIR}/layouts/partials/container-footer.html"
 
 # Populate an array with just docker dirs and one with content dirs
-docker_dir=(`ls -d /docs/content/docker/*`)
+# docker_dir=(`ls -d /docs/content/docker/*`)
 content_dir=(`ls -d /docs/content/*`)
 
 # Loop content not of docker/
@@ -32,13 +32,15 @@ do
       ;;
       "/docs/content/linux")
       ;;
-      "/docs/content/docker")
-         y=${i##*/}
-         find $i -type f -name "*.md" -exec sed -i.old \
-         -e '/^<!.*metadata]>/g' \
-         -e '/^<!.*end-metadata.*>/g' {} \;
+      "/docs/content/registry")
+      y=${i##*/}
+      find $i -type f -name "*.md" -not -name "*.compare.md" -exec sed -i.old \
+        -e '/^<!\(--\)\{0,1\}\[\(end-\)\{0,1\}metadata\]\(--\)\{0,1\}>/g' \
+        -e 's/\(\][(]\)\(\.*\/\)*/\1/g' \
+        -e 's/\(\][(]\)\([A-Za-z0-9_/-]\{1,\}\)\(\.md\)\{0,1\}\(#\{0,1\}\(#[A-Za-z0-9_-]*\)\{0,1\}\)[)]/\1\/'$y'\/\2\4)/g' \
+        {} \;
       ;;
-      *)
+      "/docs/content/compose")
         y=${i##*/}
         find $i -type f -name "*.md" -exec sed -i.old \
         -e '/^<!.*metadata]>/g' \
@@ -48,24 +50,65 @@ do
         -e 's/\([(]\)\(.*\)\(\.md\)/\1\2/g'  \
         -e 's/\(\][(]\)\(\.\/\)/\1\/'$y'\//g' \
         -e 's/\(\][(]\)\(\.\.\/\.\.\/\)/\1\/'$y'\//g' \
-        -e 's/\(\][(]\)\(\.\.\/\)/\1\/'$y'\//g' {} \;
+        -e 's/\(\][(]\)\(\.\.\/\)/\1\/'$y'\//g' {} \;  
+      ;;
+      "/docs/content/swarm")
+         y=${i##*/}
+         find $i -type f -name "*.md" -exec sed -i.old \
+        -e '/^<!.*metadata]>/g' \
+        -e '/^<!.*end-metadata.*>/g' \
+        -e 's/\(\]\)\([(]\)\(\/\)/\1\2\/'$y'\//g' \
+        -e 's/\(\][(]\)\([A-z].*\)\(\.md\)/\1\/'$y'\/\2/g' \
+        -e 's/\([(]\)\(.*\)\(\.md\)/\1\2/g'  \
+        -e 's/\(\][(]\)\(\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\.\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\)/\1\/'$y'\//g' {} \;     
+      ;;
+      "/docs/content/machine")
+        y=${i##*/}
+        find $i -type f -name "*.md" -exec sed -i.old \
+        -e '/^<!.*metadata]>/g' \
+        -e '/^<!.*end-metadata.*>/g' \
+        -e 's/\(\]\)\([(]\)\(\/\)/\1\2\/'$y'\//g' \
+        -e 's/\(\][(]\)\([A-z].*\)\(\.md\)/\1\/'$y'\/\2/g' \
+        -e 's/\([(]\)\(.*\)\(\.md\)/\1\2/g'  \
+        -e 's/\(\][(]\)\(\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\.\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\)/\1\/'$y'\//g' {} \;  
+      ;;
+      "/docs/content/kitematic")
+         y=${i##*/}
+        find $i -type f -name "*.md" -exec sed -i.old \
+        -e '/^<!.*metadata]>/g' \
+        -e '/^<!.*end-metadata.*>/g' \
+        -e 's/\(\]\)\([(]\)\(\/\)/\1\2\/'$y'\//g' \
+        -e 's/\(\][(]\)\([A-z].*\)\(\.md\)/\1\/'$y'\/\2/g' \
+        -e 's/\([(]\)\(.*\)\(\.md\)/\1\2/g'  \
+        -e 's/\(\][(]\)\(\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\.\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\)/\1\/'$y'\//g' {} \;         
+      ;;
+      "/docs/content/opensource")
+         y=${i##*/}
+        find $i -type f -name "*.md" -exec sed -i.old \
+        -e '/^<!.*metadata]>/g' \
+        -e '/^<!.*end-metadata.*>/g' \
+        -e 's/\(\]\)\([(]\)\(\/\)/\1\2\/'$y'\//g' \
+        -e 's/\(\][(]\)\([A-z].*\)\(\.md\)/\1\/'$y'\/\2/g' \
+        -e 's/\([(]\)\(.*\)\(\.md\)/\1\2/g'  \
+        -e 's/\(\][(]\)\(\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\.\.\/\)/\1\/'$y'\//g' \
+        -e 's/\(\][(]\)\(\.\.\/\)/\1\/'$y'\//g' {} \;         
+      ;;
+      *)
+         y=${i##*/}
+        find $i -type f -name "*.md" -exec sed -i.old \
+        -e '/^<!.*metadata]>/g' \
+        -e '/^<!.*end-metadata.*>/g' {} \;        
       ;;
       esac
 done
 
-#
-#  Move docker directories to content
-#
-for i in "${docker_dir[@]}"
-do
-   :
-    if [ -d $i ]    
-      then
-        mv $i /docs/content/ 
-      fi
-done
-
-rm -rf /docs/content/docker
 
 # Substitute in the build data in the buildinfo partial
 sed "/BUILD_DATA/r $BUILD_JSON" "$BUILDINFO_PARTIAL" | sed '/BUILD_DATA/d' > "${BUILDINFO_PARTIAL}.out" \
