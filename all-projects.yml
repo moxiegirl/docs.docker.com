@@ -27,7 +27,7 @@ projects:
       
     - name: docker-trusted-registry
       repo_name: dhe-deploy   
-      ref: master
+      ref: docs
       path: docs/     
       
     - name: registry
