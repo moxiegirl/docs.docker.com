@@ -26,13 +26,18 @@ RUN apt-get update \
 # TODO: Test to see if the above holds true
 RUN pip install awscli==1.4.4 pyopenssl==0.12
 
-ENV HUGO_VERSION 0.14
-RUN curl -sSL https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux_amd64.tar.gz \
-	| tar -v -C /usr/local/bin -xz --strip-components 1 \
-	&& mv /usr/local/bin/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
-
 COPY requirements.txt /src/
 RUN pip install -r requirements.txt
+
+#ENV HUGO_VERSION 0.14
+#RUN curl -sSL https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux_amd64.tar.gz \
+#	| tar -v -C /usr/local/bin -xz --strip-components 1 \
+#	&& mv /usr/local/bin/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
+
+RUN curl -sSL -o /usr/local/bin/hugo https://github.com/SvenDowideit/hugo/releases/download/v0.14%2Bgithublinking/hugo
+#RUN curl -sSL -o /usr/local/bin/hugo https://github.com/SvenDowideit/hugo/releases/download/docker-1/hugo
+#ADD hugo /usr/local/bin/hugo
+RUN chmod 755 /usr/local/bin/hugo
 
 COPY . /src/
 

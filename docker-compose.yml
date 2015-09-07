@@ -20,7 +20,7 @@ fetch:
 
 build:
     build: .
-    command: /bin/bash -ec "hugo -d /public/$DOCS_VERSION"
+    command: /bin/bash -ec "hugo -d /public/$DOCS_VERSION --config=config.toml"
     working_dir: /docs
     volumes_from:
         - data
@@ -86,7 +86,7 @@ cleanup:
 serve:
     build: .
     working_dir: /docs
-    command: /bin/bash -c "hugo server -d /public --port=8000 --baseUrl=$HUGO_BASE_URL --bind=$HUGO_BIND_IP"
+    command: /bin/bash -c "hugo server -d /public --port=8000 --baseUrl=$HUGO_BASE_URL --bind=$HUGO_BIND_IP --config=config.toml"
     environment:
         - HUGO_BASE_URL
         - HUGO_BIND_IP
@@ -101,7 +101,7 @@ test:
     command: |
         /bin/bash -c " \
         URL=http://$HUGO_BASE_URL:8000
-        hugo server -d /public --port=8000 --baseUrl=$HUGO_BASE_URL --bind=$HUGO_BIND_IP &
+        hugo server -d /public --port=8000 --baseUrl=$HUGO_BASE_URL --bind=$HUGO_BIND_IP --config=config.toml &
         until curl --fail --silent $URL ; do \
           sleep 1 ; \
         done
