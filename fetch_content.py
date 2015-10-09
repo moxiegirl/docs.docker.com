@@ -71,10 +71,12 @@ def gather_git_info(org, repo_name, ref):
         ref=ref
     )
 
-    commit_info = requests.get(
+    r = requests.get(
         'https://api.github.com/repos/{org}/{repo_name}/commits/{ref}'.format(**info),
         auth=(os.environ['GITHUB_USERNAME'], os.environ['GITHUB_TOKEN']),
-    ).json()
+    )
+    print 'WARNING: request for commit info to {0}/{1} returned {2}'.format(org, repo_name, r.status_code)
+    commit_info = r.json()
 
     info['sha'] = commit_info['sha']
     info['archive_url'] = 'https://github.com/{org}/{repo_name}/archive/{sha}.tar.gz'.format(**info)

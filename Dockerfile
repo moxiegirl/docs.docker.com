@@ -26,18 +26,23 @@ RUN apt-get update \
 # TODO: Test to see if the above holds true
 RUN pip install awscli==1.4.4 pyopenssl==0.12
 
-COPY requirements.txt /src/
-RUN pip install -r requirements.txt
-
 #ENV HUGO_VERSION 0.14
 #RUN curl -sSL https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux_amd64.tar.gz \
 #	| tar -v -C /usr/local/bin -xz --strip-components 1 \
 #	&& mv /usr/local/bin/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
-
-RUN curl -sSL -o /usr/local/bin/hugo https://github.com/SvenDowideit/hugo/releases/download/v0.14%2Bgithublinking/hugo
-#RUN curl -sSL -o /usr/local/bin/hugo https://github.com/SvenDowideit/hugo/releases/download/docker-1/hugo
 #ADD hugo /usr/local/bin/hugo
-RUN chmod 755 /usr/local/bin/hugo
+ADD https://github.com/SvenDowideit/hugo/releases/download/test-2/hugo /usr/local/bin/hugo
+RUN chmod 755 /usr/local/bin/hugo \
+	&& /usr/local/bin/hugo version
+
+ADD https://github.com/SvenDowideit/markdownlint/releases/download/test-1/markdownlint /usr/local/bin/markdownlint
+RUN chmod 755 /usr/local/bin/markdownlint
+
+ADD https://github.com/SvenDowideit/linkcheck/releases/download/test-1/linkcheck /usr/local/bin/linkcheck
+RUN chmod 755 /usr/local/bin/linkcheck
+
+COPY requirements.txt /src/
+RUN pip install -r requirements.txt
 
 COPY . /src/
 

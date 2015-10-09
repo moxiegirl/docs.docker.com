@@ -47,3 +47,22 @@ export: build
 
 shell: build
 	$(DOCKER_COMPOSE) run --rm build /bin/bash
+
+markdownlint:
+	docker exec -it docsdockercom_serve_1 /usr/local/bin/markdownlint /docs/content/
+
+htmllint:
+	docker exec -it docsdockercom_serve_1 /usr/local/bin/linkcheck http://127.0.0.1:8000
+
+all: clean build build-images serve
+
+# Sven doesn't have docker-compose installed on some boxes, so use a compose container
+compose:
+	docker run --rm -it \
+		-e GITHUB_USERNAME -e GITHUB_TOKEN \
+		-v $(CURDIR):$(CURDIR) \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		-v /usr/bin/docker-static:/usr/bin/docker \
+		-w $(CURDIR) \
+		--entrypoint bash \
+			svendowideit/compose
