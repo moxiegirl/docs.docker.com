@@ -32,8 +32,8 @@ RUN pip install awscli==1.4.4 pyopenssl==0.12
 #	&& mv /usr/local/bin/hugo_${HUGO_VERSION}_linux_amd64 /usr/local/bin/hugo
 #ADD hugo /usr/local/bin/hugo
 ADD https://github.com/SvenDowideit/hugo/releases/download/test-2/hugo /usr/local/bin/hugo
-RUN chmod 755 /usr/local/bin/hugo \
-	&& /usr/local/bin/hugo version
+RUN chmod 755 /usr/local/bin/hugo
+RUN /usr/local/bin/hugo version
 
 ADD https://github.com/SvenDowideit/markdownlint/releases/download/test-1/markdownlint /usr/local/bin/markdownlint
 RUN chmod 755 /usr/local/bin/markdownlint
@@ -45,4 +45,3 @@ COPY requirements.txt /src/
 RUN pip install -r requirements.txt
 
 COPY . /src/
-
