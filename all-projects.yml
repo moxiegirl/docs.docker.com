@@ -14,9 +14,10 @@ projects:
       path: !!null
       target: .
 
-    - name: docker
-      org: docker
-      target: content/engine
+    - name: engine
+      repo_name: docker
+      org: moxiegirl
+      ref: new-networking-docs
       path: docs/
 
     - name: docker-hub
