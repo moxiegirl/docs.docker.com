@@ -2,6 +2,7 @@
 # so "en/latest/," removes the "en/latest/" prefix from any incoming URL and redirects it to something on the root
 # from,to
 # Oct 2015: moved docker/docker docs from root to /engine/
+articles/networking,engine/userguide/networking
 article-img/,engine/article-img/
 articles/,engine/articles/
 examples/,engine/examples/
@@ -9,7 +10,7 @@ extend/,engine/extend/
 installation/,engine/installation/
 introduction/,engine/introduction/
 misc/,engine/misc/
-project/,engine/project/
+project/,opensource/project/
 reference/,engine/reference/
 security/,engine/security/
 static_files/,engine/static_files/

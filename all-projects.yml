@@ -14,9 +14,9 @@ projects:
       path: !!null
       target: .
 
-    - name: docker
-      org: docker
-      target: content/engine
+    - name: engine
+      repo_name: docker
+      ref: docs
       path: docs/
 
     - name: docker-hub
@@ -36,20 +36,26 @@ projects:
 
     - name: kitematic
       org: kitematic
+      ref: master
       path: docs/
 
     - name: compose
+      ref: docs
       path: docs/
 
     - name: swarm
+      ref: master
       path: docs/
 
     - name: machine
+      ref: master
       path: docs/
 
     - name: opensource
+      ref: master
       path: docs/
 
     - name: tutorials
+      ref: master
       target: content
       path: docs/
