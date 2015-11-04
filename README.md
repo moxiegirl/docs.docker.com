@@ -100,23 +100,18 @@ This project is builds and releases the documentation for all of Docker &ndash; 
         GITHUB_USERNAME=SvenDowideit
         S3HOSTNAME=sven.s3-website-us-east-1.amazonaws.com
         CHECKURL=http://sven.s3-website-us-east-1.amazonaws.com
-        RELEASE_LATEST=1
-
-6. Clean any old images from previous passes.
-
-        $ make clean
-
-7. Build the necessary images used by the system.
-
-        $ make build-images
+        #RELEASE_LATEST=1
 
 8. Run the server locally to test and review your changes.
 
-        $ make serve
+        $ make docs
 
-9. Release to the subfolder (created if it doesn't exist).
+9.  Publish verioned html to s3 (created if it doesn't exist).
 
         $ make release     
+
+	This command will publish only to a subdirectory with the
+	same name as what is set in the `VERSION` file.
 
 9a. Re-set the s3 redirects
 
@@ -140,8 +135,6 @@ This project is builds and releases the documentation for all of Docker &ndash; 
                                    PRE v1.7/
                                    PRE windows/
 
-11. Upload the content to the bucket root.
+11. Publish html to the root (Only if this is from the latest release)
 
-        $ RELEASE_LATEST=1 make release 
-
-
+	$ RELEASE_LATEST=1 make release
