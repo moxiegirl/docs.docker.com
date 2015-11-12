@@ -88,8 +88,8 @@ This project is builds and releases the documentation for all of Docker &ndash; 
 
     The above are example values of course. You'll need to use valid values to publish.
 
-    Alternativly, you can set the values in a `aws.env` file beside the Makefile in `docs.docker.com`.
-    The Makefile will altomatically include any values that are set in this file.
+    Alternatively, you can set the values in a `aws.env` file beside the Makefile in `docs.docker.com`.
+    The Makefile will automatically include any values that are set in this file.
     The environment variables you can set include:
 
         AWS_USER=sven
@@ -121,7 +121,7 @@ This project is builds and releases the documentation for all of Docker &ndash; 
 9a. Re-set the s3 redirects
 
     The `make release` command also sets up the redirects, but if you need to
-    update them separatly, you can run:
+    update them separately, you can run:
 
         $ make redirects
 

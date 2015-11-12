@@ -23,7 +23,7 @@ Projects is a list of project dictionaries. Each project dictionary can have the
 
 #### A note about substitution
 
-The values for all keys will be run through Python's string formatting, appliying the dictionary itself as the source for other values. E.g.: a value of `content/{name}` for the `target` and `foo` for the `name` will result in `target` resolving to the value `content/foo`.
+The values for all keys will be run through Python's string formatting, applying the dictionary itself as the source for other values. E.g.: a value of `content/{name}` for the `target` and `foo` for the `name` will result in `target` resolving to the value `content/foo`.
 
 ---
 
