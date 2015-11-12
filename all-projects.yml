@@ -14,9 +14,9 @@ projects:
       path: !!null
       target: .
 
-    - name: engine
-      repo_name: docker
-      ref: docs
+    - name: docker
+      org: docker
+      target: content/engine
       path: docs/
 
     - name: docker-hub
@@ -25,14 +25,16 @@ projects:
       path: docs/
 
     - name: docker-trusted-registry
+      org: vikstrous
       repo_name: dhe-deploy
-      ref: docs
+      ref: 1.4.0_apidocs2
       path: docs/
 
     - name: apidocs
+      org: vikstrous
       repo_name: dhe-deploy
-      ref: master
-      path: apidocgen/output/docker-trusted-registry/
+      ref: 1.4.0_apidocs2
+      path: apidocgen/output/
 
     - name: registry
       repo_name: distribution
@@ -41,26 +43,20 @@ projects:
 
     - name: kitematic
       org: kitematic
-      ref: master
       path: docs/
 
     - name: compose
-      ref: docs
       path: docs/
 
     - name: swarm
-      ref: master
       path: docs/
 
     - name: machine
-      ref: master
       path: docs/
 
     - name: opensource
-      ref: master
       path: docs/
 
     - name: tutorials
-      ref: master
       target: content
       path: docs/
