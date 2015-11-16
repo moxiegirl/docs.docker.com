@@ -26,17 +26,17 @@ projects:
 
     - name: docker-trusted-registry
       repo_name: dhe-deploy
-      ref: docs
+      ref: master
       path: docs/
 
     - name: apidocs
       repo_name: dhe-deploy
       ref: master
-      path: apidocgen/output/docker-trusted-registry/
+      path: apidocgen/output/
 
     - name: registry
       repo_name: distribution
-      ref: master
+      ref: docs
       path: docs/
 
     - name: kitematic
@@ -49,11 +49,11 @@ projects:
       path: docs/
 
     - name: swarm
-      ref: master
+      ref: docs
       path: docs/
 
     - name: machine
-      ref: master
+      ref: docs
       path: docs/
 
     - name: opensource
