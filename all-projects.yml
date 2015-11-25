@@ -9,8 +9,8 @@ defaults:
 
 projects:
     - name: docs-base
-      org: docker
-      ref: hugo-github-linking
+      org: moxiegirl
+      ref: fix-archive
       path: !!null
       target: .
 
