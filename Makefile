@@ -57,7 +57,7 @@ build: fetch
 		  -e S3HOSTNAME=$(S3HOSTNAME) \
 		build
 
-release: build test-aws-env upload
+release: test-aws-env clean build-images build upload
 
 upload:
 	CLEAN=$(DOCS_VERSION) $(DOCKER_COMPOSE) run --rm \
