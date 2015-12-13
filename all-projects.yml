@@ -9,13 +9,13 @@ defaults:
 
 projects:
     - name: docs-base
-      org: docker
-      ref: hugo-github-linking
+      org: moxiegirl
+      ref: flickerbox-test
       path: !!null
       target: .
 
     - name: engine
       repo_name: docker
       org: moxiegirl
-      ref: flickerbox-testing
+      ref: flickerbox-test
       path: docs/
