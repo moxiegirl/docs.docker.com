@@ -9,13 +9,62 @@ defaults:
 
 projects:
     - name: docs-base
+      repo_name: docs-base
       org: moxiegirl
       ref: flickerbox-test
       path: !!null
       target: .
 
+    - name: docker-trusted-registry
+      repo_name: dhe-deploy
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: compose
+      repo_name: compose
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: machine
+      repo_name: machine
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
     - name: engine
       repo_name: docker
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: swarm
+      repo_name: swarm
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: docker-hub
+      repo_name: hub2-demo
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: kitematic
+      repo_name: kitematic
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: registry
+      repo_name: distribution
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: tutorials
+      repo_name: tutorials
       org: moxiegirl
       ref: flickerbox-test
       path: docs/
