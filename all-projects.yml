@@ -10,7 +10,7 @@ defaults:
 projects:
     - name: docs-base
       org: docker
-      ref: hugo-github-linkin
+      ref: hugo-github-linking
       path: !!null
       target: .
 
