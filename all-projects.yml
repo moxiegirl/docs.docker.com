@@ -10,8 +10,8 @@ defaults:
 projects:
     - name: docs-base
       repo_name: docs-base
-      org: moxiegirl
-      ref: flickerbox-test
+      org: docker
+      ref: flickerbox
       path: !!null
       target: .
 
