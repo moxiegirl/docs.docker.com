@@ -63,3 +63,10 @@ projects:
       ref: master
       target: content
       path: docs/
+
+    - name: docker-cloud
+      org: moxiegirl
+      repo_name: cloud-docs
+      ref: ga-format
+      target: content
+      path: docs/
