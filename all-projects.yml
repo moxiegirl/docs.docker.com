@@ -26,7 +26,7 @@ projects:
 
     - name: docker-trusted-registry
       repo_name: dhe-deploy
-      ref: master
+      ref: docs-1.9.1-cs3
       path: docs/
 
     - name: apidocs
