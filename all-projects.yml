@@ -10,7 +10,6 @@ defaults:
 projects:
     - name: docs-base
       org: docker
-      ref: hugo-github-linking
       path: !!null
       target: .
 
@@ -31,7 +30,7 @@ projects:
 
     - name: apidocs
       repo_name: dhe-deploy
-      ref: master
+      ref: docs
       path: apidocgen/output/docker-trusted-registry/
 
     - name: registry
