@@ -74,7 +74,7 @@ upload() {
 		find . -size 0 -type f -printf "DELETING empty file %p\n" -delete
 	fi
 
-	aws s3 sync --acl=public-read /public/ s3://$AWS_S3_BUCKET/$DEST_PATH/
+	aws s3 sync --acl=public-read /public/ s3://$AWS_S3_BUCKET/$DEST_PATH
 }
 
 cleanup() {
