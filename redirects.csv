@@ -9,7 +9,7 @@ extend/,engine/extend/
 installation/,engine/installation/
 introduction/,engine/introduction/
 misc/,engine/misc/
-project/,engine/project/
+project/,opensource/project/
 reference/,engine/reference/
 security/,engine/security/
 static_files/,engine/static_files/
@@ -49,3 +49,10 @@ docker-trusted-registry/adminguide/upgrade.md,docker-trusted-registry/install/up
 docker-trusted-registry/quick-start/install.md,docker-trusted-registry/install/
 docker-trusted-registry/adminguide/docker-trusted-registry/install.md,docker-trusted-registry/install/
 
+# Docker Hub archived docs are not useful, so redirecting to latest
+v1.3/docker-hub/,docker-hub/
+v1.4/docker-hub/,docker-hub/
+v1.5/docker-hub/,docker-hub/
+v1.6/docker-hub/,docker-hub/
+v1.7/docker-hub/,docker-hub/
+v1.8/docker-hub/,docker-hub/
