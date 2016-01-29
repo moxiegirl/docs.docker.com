@@ -32,7 +32,7 @@ build:
 serve: build
 	docker run --rm -it \
 		-p 8000:8000 \
-		-w /docs/ \
+		-w "/docs" \
 		-e GITHUB_USERNAME \
 		-e GITHUB_TOKEN \
 		$(DOCKER_IMAGE) \
@@ -55,7 +55,7 @@ upload: build
 		-e GITHUB_USERNAME \
 		-e GITHUB_TOKEN \
 		-e S3HOSTNAME=$(S3HOSTNAME) \
-		-w /docs/ \
+		-w "/docs" \
 		$(DOCKER_IMAGE) \
 			build_and_upload
 
@@ -65,7 +65,7 @@ export: build
 		-e S3HOSTNAME=$(S3HOSTNAME) \
 		-e GITHUB_USERNAME \
 		-e GITHUB_TOKEN \
-		-w /docs/ \
+		-w "/docs" \
 		$(DOCKER_IMAGE) \
 			build
 	docker cp $(CONTAINER_NAME):/public - | gzip > docs-docker-com.tar.gz
@@ -74,7 +74,7 @@ export: build
 shell: build
 	docker run --rm -it \
 		-p 8000:8000 \
-		-w /docs/ \
+		-w "/docs" \
 		-e GITHUB_USERNAME \
 		-e GITHUB_TOKEN \
 		-e S3HOSTNAME=$(S3HOSTNAME) \
@@ -90,7 +90,7 @@ shell: build
 htmllint-s3: build
 	docker run -d -it \
 		--name $(CONTAINER_NAME) \
-		-w /docs/ \
+		-w "/docs" \
 		-e CHECKURL=$(CHECKURL) \
 		$(DOCKER_IMAGE) \
 		htmllint
@@ -98,7 +98,7 @@ htmllint-s3: build
 
 test: buld
 	docker run --rm -it \
-		-w /docs/ \
+		-w "/docs" \
 		-e GITHUB_USERNAME \
 		-e GITHUB_TOKEN \
 		$(DOCKER_IMAGE) \
@@ -123,7 +123,7 @@ clean-bucket: build
 		-e AWS_SECRET_ACCESS_KEY \
 		-e AWS_S3_BUCKET=$(AWS_S3_BUCKET) \
 		-e RM_OLDER_THAN=$(RM_OLDER_THAN) \
-		-w /docs/ \
+		-w "/docs" \
 		$(DOCKER_IMAGE) \
 		cleanup
 
