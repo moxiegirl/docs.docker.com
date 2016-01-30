@@ -44,7 +44,7 @@ clean:
 	docker rmi -f $(DOCKER_IMAGE) 2>/dev/null ||:
 
 upload: build
-	docker run --rm -it \
+	docker run --rm -i \
 		-e CLEAN=$(CLEAN) \
 		-e RELEASE_LATEST=$(RELEASE_LATEST) \
 		-e DOCS_VERSION=$(DOCS_VERSION) \
@@ -61,7 +61,7 @@ upload: build
 
 # BEWARE that the $S3HOSTNAME will be embedded in some of the output html
 export: build
-	docker run --name $(CONTAINER_NAME) -it \
+	docker run --name $(CONTAINER_NAME) -i \
 		-e S3HOSTNAME=$(S3HOSTNAME) \
 		-e GITHUB_USERNAME \
 		-e GITHUB_TOKEN \
@@ -88,7 +88,7 @@ shell: build
 
 
 htmllint-s3: build
-	docker run -d -it \
+	docker run -d -i \
 		--name $(CONTAINER_NAME) \
 		-w "/docs" \
 		-e CHECKURL=$(CHECKURL) \
@@ -96,8 +96,8 @@ htmllint-s3: build
 		htmllint
 
 
-test: buld
-	docker run --rm -it \
+test: build
+	docker run --rm -i \
 		-w "/docs" \
 		-e GITHUB_USERNAME \
 		-e GITHUB_TOKEN \
@@ -107,7 +107,7 @@ test: buld
 redirects:
 	docker build -t docsdockercom_redirects -f Dockerfile.redirects .
 	docker run \
-		--rm -it \
+		--rm -i \
 		-e S3HOSTNAME=$(S3HOSTNAME) \
 		-e AWS_USER=$(AWS_USER) \
  		-e AWS_ACCESS_KEY_ID \
@@ -116,7 +116,7 @@ redirects:
 		docsdockercom_redirects
 
 clean-bucket: build
-	docker run --rm -it \
+	docker run --rm -i \
 		-e S3HOSTNAME=$(S3HOSTNAME) \
 		-e AWS_USER=$(AWS_USER) \
  		-e AWS_ACCESS_KEY_ID \
@@ -128,7 +128,7 @@ clean-bucket: build
 		cleanup
 
 totally-clean-bucket:
-	docker run --rm -it \
+	docker run --rm -i \
 		-e S3HOSTNAME=$(S3HOSTNAME) \
 		-e AWS_USER=$(AWS_USER) \
  		-e AWS_ACCESS_KEY_ID \
