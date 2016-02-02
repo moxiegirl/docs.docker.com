@@ -90,6 +90,7 @@ def gather_git_info(org, repo_name, ref):
 
 
 def fetch_project(destination, org, repo_name, name, ref, path, ignores=None, target=None):
+    print '--- fetch_project', name, 'from', org, repo_name, ref, path
     git_info = gather_git_info(org, repo_name, ref)
     archive_url = git_info.pop('archive_url')
 
