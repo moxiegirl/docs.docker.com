@@ -1,7 +1,7 @@
 defaults:
     org: docker
     ref: master
-    path: docs
+    path: docs/
     repo_name: "{name}"
     name: "{repo_name}"
     target: "content/{name}"
@@ -14,14 +14,10 @@ projects:
       target: .
 
     - name: docker
-      org: docker
       target: content/engine
-      path: docs/
 
     - name: docker-hub
       repo_name: hub2-demo
-      ref: master
-      path: docs/
 
     - name: docker-trusted-registry
       repo_name: dhe-deploy
@@ -35,25 +31,18 @@ projects:
 
     - name: registry
       repo_name: distribution
-      ref: master
-      path: docs/
+
+    - name: toolbox
 
     - name: kitematic
-      org: kitematic
-      path: docs/
 
     - name: compose
-      path: docs/
 
     - name: swarm
-      path: docs/
 
     - name: machine
-      path: docs/
 
     - name: opensource
-      path: docs/
 
     - name: tutorials
       target: content
-      path: docs/
