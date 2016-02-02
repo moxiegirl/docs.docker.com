@@ -31,7 +31,7 @@ projects:
     - name: apidocs
       repo_name: dhe-deploy
       ref: docs
-      path: apidocgen/output/docker-trusted-registry/
+      path: apidocgen/output
 
     - name: registry
       repo_name: distribution
