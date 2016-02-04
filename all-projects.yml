@@ -14,6 +14,7 @@ projects:
       target: .
 
     - name: docker
+      ref: docs
       target: content/engine
 
     - name: docker-hub
@@ -37,12 +38,14 @@ projects:
     - name: kitematic
 
     - name: compose
+      ref: docs
 
     - name: swarm
 
     - name: machine
 
     - name: notary
+      ref: docs
 
     - name: opensource
 
