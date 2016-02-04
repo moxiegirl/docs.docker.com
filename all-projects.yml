@@ -42,6 +42,8 @@ projects:
 
     - name: machine
 
+    - name: notary
+
     - name: opensource
 
     - name: tutorials
