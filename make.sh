@@ -46,8 +46,8 @@ build() {
 		DEST_PATH=""
 	fi
 
-	echo "RUNNING: hugo -d /public/$DEST_PATH --baseUrl=http://$S3HOSTNAME/$DEST_PATH --config=config.toml"
-	hugo -d /public/$DEST_PATH --baseUrl=http://$S3HOSTNAME/$DEST_PATH --config=config.toml
+	echo "RUNNING: hugo -d /public/$DEST_PATH --baseUrl=https://$S3HOSTNAME/$DEST_PATH --config=config.toml"
+	hugo -d /public/$DEST_PATH --baseUrl=https://$S3HOSTNAME/$DEST_PATH --config=config.toml
 }
 
 upload() {
