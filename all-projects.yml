@@ -1,6 +1,6 @@
 defaults:
     org: docker
-    ref: master
+    ref: docs
     path: docs/
     repo_name: "{name}"
     name: "{repo_name}"
@@ -9,7 +9,8 @@ defaults:
 
 projects:
     - name: docs-base
-      org: docker
+      org: moxiegirl
+      ref: api-docs
       path: !!null
       target: .
 
@@ -17,7 +18,12 @@ projects:
       target: content/engine
 
     - name: docker-hub
+      ref: master
       repo_name: hub2-demo
+
+    - name: docker-cloud
+      ref: master
+      repo_name: cloud-docs
 
     - name: docker-trusted-registry
       repo_name: dhe-deploy
@@ -30,21 +36,27 @@ projects:
       path: apidocgen/output
 
     - name: registry
+      ref: master
       repo_name: distribution
 
     - name: toolbox
+      ref: master
 
     - name: kitematic
+      ref: master
 
     - name: compose
 
     - name: swarm
 
     - name: machine
-
+      ref: master
+      
     - name: notary
 
     - name: opensource
+      ref: master
 
     - name: tutorials
+      ref: master
       target: content
