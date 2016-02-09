@@ -1,7 +1,7 @@
 defaults:
     org: docker
     ref: master
-    path: docs/
+    path: docs
     repo_name: "{name}"
     name: "{repo_name}"
     target: "content/{name}"
@@ -9,42 +9,61 @@ defaults:
 
 projects:
     - name: docs-base
-      org: docker
+      repo_name: docs-base
+      ref: flickerbox
       path: !!null
       target: .
 
-    - name: docker
-      target: content/engine
+    - name: docker-trusted-registry
+      repo_name: dhe-deploy
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: compose
+      repo_name: compose
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: machine
+      repo_name: machine
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: engine
+      repo_name: docker
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
+
+    - name: swarm
+      repo_name: swarm
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
 
     - name: docker-hub
       repo_name: hub2-demo
-
-    - name: docker-trusted-registry
-      repo_name: dhe-deploy
-      ref: docs
+      org: moxiegirl
+      ref: flickerbox-test
       path: docs/
 
-    - name: apidocs
-      repo_name: dhe-deploy
-      ref: docs
-      path: apidocgen/output
+    - name: kitematic
+      repo_name: kitematic
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
 
     - name: registry
       repo_name: distribution
-
-    - name: toolbox
-
-    - name: kitematic
-
-    - name: compose
-
-    - name: swarm
-
-    - name: machine
-
-    - name: notary
-
-    - name: opensource
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
 
     - name: tutorials
-      target: content
+      repo_name: tutorials
+      org: moxiegirl
+      ref: flickerbox-test
+      path: docs/
